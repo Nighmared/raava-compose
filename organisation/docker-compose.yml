@@ -1,19 +1,5 @@
 version: "3.3"
 services:
-  shiori:
-    image: ghcr.io/go-shiori/shiori:dev
-    restart: unless-stopped
-    volumes:
-      - shiori_data:/shiori
-    ports:
-      - 8086:8080
-    environment:
-      - SHIORI_DBMS=postgresql
-      - SHIORI_PG_USER=${db_user}
-      - SHIORI_PG_PASS=${db_password}
-      - SHIORI_PG_NAME=shiori
-      - SHIORI_PG_HOST=${db_host}
-      - SHIORI_PG_PORT=${db_port}
   linkding:
     image: sissbruecker/linkding
     restart: unless-stopped
