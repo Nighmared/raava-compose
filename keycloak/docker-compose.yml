@@ -20,3 +20,5 @@ services:
     command: ["start-dev"]
 networks:
   keycloak: null
+  db:
+    external: true
