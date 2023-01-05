@@ -18,4 +18,5 @@ volumes:
   postgres_data:
 
 networks:
-  db: null
+  db:
+    driver: bridge
