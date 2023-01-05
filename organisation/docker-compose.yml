@@ -7,6 +7,13 @@ services:
       - shiori_data:/shiori
     ports:
       - 8086:8080
+    environment:
+      - SHIORI_DBMS=postgresql
+      - SHIORI_PG_USER=${db_user}
+      - SHIORI_PG_PASS=${db_password}
+      - SHIORI_PG_NAME=shiori
+      - SHIORI_PG_HOST=${db_host}
+      - SHIORI_PG_PORT=${db_port}
 
 
 
