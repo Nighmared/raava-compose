@@ -6,7 +6,7 @@ services:
     volumes:
       -shiori_data:/shiori
     ports:
-      8086:8080
+      - 8086:8080
 
 
 
