@@ -12,6 +12,8 @@ services:
   sftpgo:
     image: drakkan/sftpgo:v2
     restart: unless-stopped
+    networks:
+      - keycloak
     ports:
       - 8090:8090
       - 2022:2022
