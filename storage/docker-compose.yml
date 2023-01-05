@@ -1,14 +1,14 @@
 version: "3.3"
 services:
-  filestash:
-    image: machines/filestash
-    restart: unless-stopped
-    ports:
-      - 8334:8334
-    environment:
-      - APPLICATION_URL=files.raava.nighmared.tech
-    volumes:
-      - filestash_config:/app/data/state
+  # filestash:
+  #   image: machines/filestash
+  #   restart: unless-stopped
+  #   ports:
+  #     - 8334:8334
+  #   environment:
+  #     - APPLICATION_URL=files.raava.nighmared.tech
+  #   volumes:
+  #     - filestash_config:/app/data/state
   sftpgo:
     image: drakkan/sftpgo:v2
     restart: unless-stopped
