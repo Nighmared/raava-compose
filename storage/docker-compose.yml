@@ -13,7 +13,7 @@ services:
     image: drakkan/sftpgo:v2
     restart: unless-stopped
     networks:
-      - keycloak
+      - keycloak_keycloak
     ports:
       - 8090:8090
       - 2022:2022
@@ -28,4 +28,5 @@ volumes:
   sftpgo_config:
 
 networks:
-  keycloak: null
+  keycloak_keycloak:
+    external: true

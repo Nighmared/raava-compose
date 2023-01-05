@@ -20,6 +20,7 @@ services:
 
     command: ["start"]
 networks:
-  keycloak: null
+  keycloak:
+    driver: bridge
   db_db:
     external: true
