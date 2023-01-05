@@ -1,0 +1,25 @@
+version: "3.3"
+services:
+  filestash:
+    image: machines/filestash
+    restart: unless-stopped
+    ports:
+      - 8334:8334
+    environment:
+      - APPLICATION_URL=files.raava.nighmared.tech
+    volumes:
+      - filestash_config:/app/data/state
+  sftpgo:
+    image: drakkan/sftpgo:v2
+    restart: unless-stopped
+    ports: 8090:8090
+      - 2022:2022
+      - 51414:51414
+    volumes:
+      - sftpgo_config:/var/lib/sftpgo
+      - ${CONFIG_MOUNTPOINT}:/etc/sftpgo
+      - ${SHARE_DIR}:/srv/sftpgo
+
+volumes:
+  filestash_config:
+  sftpgo_config:
