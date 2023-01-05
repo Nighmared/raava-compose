@@ -14,9 +14,16 @@ services:
       - SHIORI_PG_NAME=shiori
       - SHIORI_PG_HOST=${db_host}
       - SHIORI_PG_PORT=${db_port}
-
+  linkding:
+    image: sissbruecker/linkding
+    restart: unless-stopped
+    volumes:
+      - linkding_data:/etc/linkding/data
+    ports:
+      - 9090:9090
 
 
 volumes:
   shiori_data:
+  linkding_data:
 
