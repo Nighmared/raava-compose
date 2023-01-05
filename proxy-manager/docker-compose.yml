@@ -5,11 +5,12 @@ services:
     restart: unless-stopped
     ports:
       - 81:81
-     # - ${public_http}:80
-     # - ${public_https}:443
+      - ${public_http}:80
+      - ${public_https}:443
     volumes:
       - proxy_manager_data:/data
       - proxy_manager_letsencrypt:/etc/letsencrypt
+
 
 
 volumes:
