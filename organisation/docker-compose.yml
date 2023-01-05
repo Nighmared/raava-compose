@@ -10,6 +10,5 @@ services:
 
 
 volumes:
-  shiori_data:
   linkding_data:
 

@@ -1,0 +1,173 @@
+version: "3.3"
+services:
+  radarr:
+    image: linuxserver/radarr
+    restart: unless-stopped
+    networks:
+      - media
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    ports:
+      - 7878:7878
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - radarr_config:/config
+      - ${MOVIES_DIR}:/movies
+      - ${MCU_DIR}:/mcu
+      - ${BOND_DIR}:/bond
+      - ${DOWNLOADS_DIR}:/torrents
+  sonarr:
+    image: linuxserver/sonarr
+    restart: unless-stopped
+    networks:
+      - media
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    ports:
+      - 8989:8989
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - sonarr_config:/config
+      - ${SERIES_DIR}:/tv
+      - ${DOWNLOADS_DIR}:/torrents
+  bazarr:
+    image: linuxserver/bazarr
+    restart: unless-stopped
+    networks:
+      - media
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    ports:
+      - 6767:6767
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    volumes:
+      - bazarr_config:/config
+      - ${SERIES_DIR}:/tv
+      - ${MOVIES_DIR}:/movies
+      - ${BOND_DIR}:/bond
+      - ${MCU_DIR}:/mcu
+  prowlarr:
+    image: linuxserver/prowlarr:nightly
+    restart: unless-stopped
+    networks:
+      - media
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    ports:
+      - 9696:9696
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - prowlarr_config:/config
+
+  ombi:
+    image: linuxserver/ombi
+    restart: unless-stopped
+    networks:
+      - media
+    dns:
+      - ${LOCAL_DNS_IP}
+      - 1.1.1.1
+      - 1.0.0.1
+    ports:
+      - 3579:3579
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    volumes:
+      - ombi_config:/config
+  overseerr:
+    image: linuxserver/overseerr
+    restart: unless-stopped
+    networks:
+      - media
+    dns:
+      - ${LOCAL_DNS_IP}
+      - 1.1.1.1
+      - 1.0.0.1
+    ports:
+      - 5055:5055
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    volumes:
+      - overseerr_config:/config
+
+  deluge:
+    image: linuxserver/deluge
+    restart: unless-stopped
+    networks:
+      - media
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    ports:
+      - 8112:8112
+      - 6881:6881
+      - 6881:6881/udp
+      - 58846:58846
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - deluge_config:/config
+      - ${SERIES_DIR}:/tv
+      - ${MOVIES_DIR}:/movies
+      - ${MCU_DIR}:/mcu
+      - ${BOND_DIR}:/bond
+      - ${DOWNLOADS_DIR}:/torrents
+  transmission:
+    image: linuxserver/transmission
+    restart: unless-stopped
+    networks:
+      - media
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+      - USER=${TRANSMISSION_USER}
+      - PASS=${TRANSMISSION_PASS}
+    volumes:
+      - transmission_config:/config
+      - ${DOWNLOADS_DIR}:/torrents
+      - ${MCU_DIR}:/mcu
+      - ${SERIES_DIR}:/tv
+      - ${BOND_DIR}:/bond
+      - ${MOVIES_DIR}:/movies
+
+volumes:
+  radarr_config:
+  sonarr_config:
+  bazarr_config:
+  prowlarr_config:
+  ombi_config:
+  overseerr_config:
+  deluge_config:
+  transmission_config:
+networks:
+  media: null
