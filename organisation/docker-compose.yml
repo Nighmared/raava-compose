@@ -4,7 +4,7 @@ services:
     image: ghcr.io/go-shiori/shiori
     restart: unless-stopped
     volumes:
-      -shiori_data:/shiori
+      - shiori_data:/shiori
     ports:
       - 8086:8080
 
