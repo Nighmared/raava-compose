@@ -26,3 +26,6 @@ services:
 volumes:
   filestash_config:
   sftpgo_config:
+
+networks:
+  keycloak: null
