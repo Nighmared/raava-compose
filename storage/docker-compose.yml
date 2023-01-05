@@ -12,7 +12,8 @@ services:
   sftpgo:
     image: drakkan/sftpgo:v2
     restart: unless-stopped
-    ports: 8090:8090
+    ports:
+      - 8090:8090
       - 2022:2022
       - 51414:51414
     volumes:
