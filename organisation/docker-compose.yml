@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   shiori:
-    image: ghcr.io/go-shiori/shiori
+    image: ghcr.io/go-shiori/shiori:dev
     restart: unless-stopped
     volumes:
       - shiori_data:/shiori
