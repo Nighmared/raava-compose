@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     ports:
       - 81:81
+      - 9990:9990
       - ${public_http}:80
       - ${public_https}:443
     volumes:
