@@ -10,8 +10,8 @@ services:
   #   volumes:
   #     - filestash_config:/app/data/state
   sftpgo:
-    image: drakkan/sftpgo:v2
-#    build: .
+#    image: drakkan/sftpgo:v2
+    build: .
     restart: unless-stopped
     networks:
       - keycloak_keycloak
@@ -19,12 +19,12 @@ services:
       - 8090:8090
       - 2022:2022
       - 51414:51414
-#    healthcheck:
-#      test: ["CMD", "curl", "-f", "http://localhost:8090/healthz"]
-#      interval: 1m30s
-#      timeout: 10s
-#      retries: 3
-#      start_period: 20s
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8090/healthz"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
     volumes:
       - sftpgo_config:/var/lib/sftpgo
       - ${CONFIG_MOUNTPOINT}:/etc/sftpgo
