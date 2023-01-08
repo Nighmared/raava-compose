@@ -19,4 +19,4 @@ volumes:
 
 networks:
   db:
-    driver: bridge
+    driver: overlay
