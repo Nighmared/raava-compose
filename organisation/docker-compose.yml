@@ -14,7 +14,7 @@ services:
     volumes:
       - linkding_data:/etc/linkding/data
     ports:
-      - 9091:9090
+      - 9901:9090
     environment:
       - OIDC_RP_CLIENT_ID=${CLIENT_ID}
       - OIDC_RP_CLIENT_SECRET=${CLIENT_SECRET}
