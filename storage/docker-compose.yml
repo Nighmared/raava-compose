@@ -18,6 +18,12 @@ services:
       - 8090:8090
       - 2022:2022
       - 51414:51414
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8090/healthz"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
     volumes:
       - sftpgo_config:/var/lib/sftpgo
       - ${CONFIG_MOUNTPOINT}:/etc/sftpgo
