@@ -8,7 +8,21 @@ services:
     ports:
       - 9090:9090
 
+  linkding-oidc:
+    image: nighmared/linkding-oidc
+    restart: unless-stopped
+    volumes: -linkding_data:/etc/linkding/data
+    ports:
+      - 9091:9090
+    environment:
+      - OIDC_RP_CLIENT_ID=${CLIENT_ID}
+      - OIDC_RP_CLIENT_SECRET=${CLIENT_SECRET}
+      - OIDC_OP_AUTHORIZATION_ENDPOINT=${AUTH_ENDPOINT}
+      - OIDC_OP_TOKEN_ENDPOINT=${TOKEN_ENDPOINT}
+      - OIDC_OP_USER_ENDPOINT=${USER_ENDPOINT}
+      - OIDC_RP_SIGN_ALGO=${SIGN_ALGO}
+      - OIDC_OP_JWKS_ENDPOINT=${JWKS_ENDPOINT}
+      - LD_ENABLE_OIDC=True
 
 volumes:
   linkding_data:
-
