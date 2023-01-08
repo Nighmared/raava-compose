@@ -9,7 +9,7 @@ services:
     ports:
       - 8081:8080
     healthcheck:
-      test: ["CMD","curl","-fsS","http://localhost:8080",">","/dev/null"]
+      test: ["CMD","curl","-fsS","http://localhost:8080"]
       interval: 1m
       timeout: 10s
       retries: 3
