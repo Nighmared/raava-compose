@@ -205,6 +205,17 @@ services:
       - ${SERIES_DIR}:/tv
       - ${BOND_DIR}:/bond
       - ${MOVIES_DIR}:/movies
+  
+  kavita:
+    image: kizaing/kavita:latest
+    volumes:
+      - ${BOOKS_DIR}:/books
+      - kavita_config:/kavita/config
+    environment:
+      - TZ=Europe/Berlin
+    ports:
+      - 5000:5000
+    restart: unless-stopped
 
 volumes:
   radarr_config:
@@ -217,5 +228,6 @@ volumes:
   deluge_config:
   transmission_config:
   nzbget_config:
+  kavita_config:
 networks:
   media: null
