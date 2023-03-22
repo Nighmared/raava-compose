@@ -55,7 +55,7 @@ services:
     volumes:
       - readarr_config:/config
       - ${BOOKS_DIR}:/books
-      - ${DOWNLOADS_DIR}:/downloads
+      - ${DOWNLOADS_DIR}:/torrents
   bazarr:
     image: linuxserver/bazarr
     restart: unless-stopped
