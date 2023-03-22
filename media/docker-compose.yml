@@ -216,5 +216,6 @@ volumes:
   overseerr_config:
   deluge_config:
   transmission_config:
+  nzbget_config:
 networks:
   media: null
