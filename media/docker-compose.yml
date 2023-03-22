@@ -20,6 +20,7 @@ services:
       - ${MCU_DIR}:/mcu
       - ${BOND_DIR}:/bond
       - ${DOWNLOADS_DIR}:/torrents
+      - ${DOWNLOADS_DIR_USENET}:/usenet
   sonarr:
     image: linuxserver/sonarr
     restart: unless-stopped
@@ -38,6 +39,8 @@ services:
       - sonarr_config:/config
       - ${SERIES_DIR}:/tv
       - ${DOWNLOADS_DIR}:/torrents
+      - ${DOWNLOADS_DIR_USENET}:/usenet
+
   readarr:
     image: linuxserver/readarr:develop
     restart: unless-stopped
@@ -56,6 +59,7 @@ services:
       - readarr_config:/config
       - ${BOOKS_DIR}:/books
       - ${DOWNLOADS_DIR}:/torrents
+      - ${DOWNLOADS_DIR_USENET}:/usenet
   bazarr:
     image: linuxserver/bazarr
     restart: unless-stopped
@@ -152,6 +156,7 @@ services:
       - ${MCU_DIR}:/mcu
       - ${BOND_DIR}:/bond
       - ${DOWNLOADS_DIR}:/torrents
+
   transmission:
     image: linuxserver/transmission
     restart: unless-stopped
@@ -177,6 +182,29 @@ services:
       - ${SERIES_DIR}:/tv
       - ${BOND_DIR}:/bond
       - ${MOVIES_DIR}:/movies
+    nzbget:
+      image: linuxserver/nzbget:latest
+      restart: unless-stopped
+      networks:
+        - media
+      dns:
+        - 1.1.1.1
+        - 1.0.0.1
+      ports:
+        - 6789:6789
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Europe/Berlin
+        - NZBGET_USER=${NZBGET_USER}
+        - NZBGET_PASS=${NZBGET_PASS}
+      volumes:
+        - nzbget_config:/config
+        - ${DOWNLOADS_DIR_USENET}:/usenet
+        - ${MCU_DIR}:/mcu
+        - ${SERIES_DIR}:/tv
+        - ${BOND_DIR}:/bond
+        - ${MOVIES_DIR}:/movies
 
 volumes:
   radarr_config:
