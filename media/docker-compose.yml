@@ -208,6 +208,8 @@ services:
   
   kavita:
     image: kizaing/kavita:latest
+    networks:
+      - media
     volumes:
       - ${BOOKS_DIR}:/books
       - kavita_config:/kavita/config
