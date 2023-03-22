@@ -38,6 +38,24 @@ services:
       - sonarr_config:/config
       - ${SERIES_DIR}:/tv
       - ${DOWNLOADS_DIR}:/torrents
+  readarr:
+    image: linuxserver/readarr:develop
+    restart: unless-stopped
+    networks:
+      - media
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    ports:
+      - 8787:8787
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - readarr_config:/config
+      - ${BOOKS_DIR}:/books
+      - ${DOWNLOADS_DIR}:/downloads
   bazarr:
     image: linuxserver/bazarr
     restart: unless-stopped
@@ -163,6 +181,7 @@ services:
 volumes:
   radarr_config:
   sonarr_config:
+  readarr_config:
   bazarr_config:
   prowlarr_config:
   ombi_config:
