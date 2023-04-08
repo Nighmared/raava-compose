@@ -205,11 +205,12 @@ services:
       - ${SERIES_DIR}:/tv
       - ${BOND_DIR}:/bond
       - ${MOVIES_DIR}:/movies
-  
+
   kavita:
     image: kizaing/kavita:latest
     networks:
       - media
+      - kavita
     volumes:
       - ${BOOKS_DIR}:/books
       - kavita_config:/kavita/config
@@ -218,6 +219,23 @@ services:
     ports:
       - 5000:5000
     restart: unless-stopped
+  kavita-email:
+    image: kizaing/kavitaemail:latest
+    restart: unless-stopped
+    networks:
+      - kavita
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    environment:
+      - SMTP_HOST=${KAVITA_EMAIL_SMTP_HOST}
+      - SMTP_PORT=${KAVITA_EMAIL_SMTP_PORT}
+      - SMTP_USER=${KAVITA_EMAIL_SMTP_USER}
+      - SMTP_PASS=${KAVITA_EMAIL_SMTP_PASS}
+      - SEND_ADDR=${KAVITA_EMAIL_SEND_ADDR}
+      - DISP_NAME=${KAVITA_EMAIL_DISP_NAME}
+      - ALLOW_SENDTO=true
+
 
 volumes:
   radarr_config:
@@ -231,5 +249,7 @@ volumes:
   transmission_config:
   nzbget_config:
   kavita_config:
+
 networks:
   media: null
+  kavita: null
