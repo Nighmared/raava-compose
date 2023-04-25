@@ -239,7 +239,6 @@ services:
       - ALLOW_SENDTO=true
   
   tdarr:
-    container_name: tdarr
     image: ghcr.io/haveagitgat/tdarr:latest
     restart: unless-stopped
     ports:
