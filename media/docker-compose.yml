@@ -237,6 +237,36 @@ services:
       - SEND_ADDR=${KAVITA_EMAIL_SEND_ADDR}
       - DISP_NAME=${KAVITA_EMAIL_DISP_NAME}
       - ALLOW_SENDTO=true
+  
+  tdarr:
+    container_name: tdarr
+    image: ghcr.io/haveagitgat/tdarr:latest
+    restart: unless-stopped
+    ports:
+      - 8265:8265 # webUI port
+      - 8266:8266 # server port
+      - 8267:8267 # Internal node port
+      - 8268:8268 # Example extra node port
+    environment:
+      - TZ=Europe/Berlin
+      - PUID=1000
+      - PGID=1000
+      - UMASK_SET=002
+      - serverIP=0.0.0.0
+      - serverPort=8266
+      - webUIPort=8265
+      - internalNode=true
+      - inContainer=true
+      - nodeName=root
+    volumes:
+      - tdarr_server:/app/server
+      - tdarr_config:/app/configs
+      - tdarr_logs:/app/logs
+      - tdarr_transcode_cache:/temp
+      - ${MCU_DIR}:/media/MCU
+      - ${BOND_DIR}:/media/bond
+      - ${SERIES_DIR}:/media/series
+      - ${MOVIES_DIR}:/media/movies
 
 
 volumes:
@@ -251,6 +281,10 @@ volumes:
   transmission_config:
   nzbget_config:
   kavita_config:
+  tdarr_server:
+  tdarr_config:
+  tdarr_logs:
+  tdarr_transcode_cache:
 
 networks:
   media: null
