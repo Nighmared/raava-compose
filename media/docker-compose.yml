@@ -117,7 +117,7 @@ services:
     volumes:
       - ombi_config:/config
   overseerr:
-    image: linuxserver/overseerr
+    image: sctx/overseerr:latest
     restart: unless-stopped
     networks:
       - media
@@ -132,7 +132,7 @@ services:
       - PGID=1000
       - TZ=Europe/Zurich
     volumes:
-      - overseerr_config:/config
+      - overseerr_config:/app/config
 
   deluge:
     image: linuxserver/deluge
@@ -237,9 +237,6 @@ services:
       - SEND_ADDR=${KAVITA_EMAIL_SEND_ADDR}
       - DISP_NAME=${KAVITA_EMAIL_DISP_NAME}
       - ALLOW_SENDTO=true
-  
-
-
 
 volumes:
   radarr_config:
@@ -253,7 +250,6 @@ volumes:
   transmission_config:
   nzbget_config:
   kavita_config:
-
 
 networks:
   media: null
