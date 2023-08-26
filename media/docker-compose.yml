@@ -240,8 +240,7 @@ services:
   plex-meta-manager:
     image: meisnate12/plex-meta-manager:latest
     restart: unless-stopped
-    networks:
-      - media
+
     dns:
       - 192.168.1.11
       - 1.1.1.1
