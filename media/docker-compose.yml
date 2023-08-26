@@ -237,6 +237,22 @@ services:
       - SEND_ADDR=${KAVITA_EMAIL_SEND_ADDR}
       - DISP_NAME=${KAVITA_EMAIL_DISP_NAME}
       - ALLOW_SENDTO=true
+  plex-meta-manager:
+    image: meisnate12/plex-meta-manager:latest
+    restart: unless-stopped
+    networks:
+      - media
+    dns:
+      - 192.168.1.11
+      - 1.1.1.1
+      - 1.0.0.1
+    environment:
+      # - PMM_RADARR_API=${RADARR_API_KEY}
+      # - PMM_SONARR_API=${SONARR_API_KEY}
+      - PMM_PLEX_TOKEN=${PMM_PLEX_TOKEN}
+      - PMM_TMDB_API=${TMDB_API_KEY}
+    volumes:
+      - ./plex-meta-manager/config:/config:rw
 
 volumes:
   radarr_config:
