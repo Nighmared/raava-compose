@@ -253,6 +253,7 @@ services:
       - PMM_TMDB_API=${TMDB_API_KEY}
     volumes:
       - ./plex-meta-manager/config:/config:rw
+    command: ["python", "./plex-meta-manager.py", "--run"]
 
 volumes:
   radarr_config:
