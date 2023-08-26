@@ -65,7 +65,7 @@ webhooks:                        # Can be individually specified per library as 
   changes:
 plex:                            # Can be individually specified per library as well; REQUIRED for the script to run
   url: http://192.168.1.25:32400
-  token: <<PLEX_TOKEN>>
+  token: <<plex_token>>
   timeout: 60
   clean_bundles: false
   empty_trash: false
