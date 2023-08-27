@@ -5,6 +5,7 @@ libraries:                       # This is called out once within the config.yml
     metadata_path:
       - pmm: basic               # This is a file within PMM's defaults folder
       - pmm: imdb                # This is a file within PMM's defaults folder
+      - pmm: separator_award
       # see the wiki for how to use local files, folders, URLs, or files from git
     overlay_path:
       - remove_overlays: false   
@@ -19,6 +20,11 @@ libraries:                       # This is called out once within the config.yml
       - pmm: streaming
       - pmm: video_format
       - pmm: ribbon
+    operations:
+      mass_critic_rating_update: imdb
+      mass_audience_rating_update: mdb_tomatoesaudience
+      mass_user_rating_update: tmdb
+
 
   Sokka - MCU:                        
     metadata_path:
@@ -37,6 +43,10 @@ libraries:                       # This is called out once within the config.yml
       - pmm: streaming
       - pmm: video_format
       - pmm: ribbon
+    operations:
+      mass_critic_rating_update: imdb
+      mass_audience_rating_update: mdb_tomatoesaudience
+      mass_user_rating_update: tmdb
 
 
   Sokka - James Bond:                      
@@ -55,11 +65,16 @@ libraries:                       # This is called out once within the config.yml
       - pmm: audio_codec
       - pmm: streaming
       - pmm: ribbon
+    operations:
+      mass_critic_rating_update: imdb
+      mass_audience_rating_update: mdb_tomatoesaudience
+      mass_user_rating_update: tmdb
 
   Sokka - Series:
     metadata_path:
       - pmm: basic              
-      - pmm: imdb                
+      - pmm: imdb   
+      - pmm: separator_award             
     overlay_path:
       - remove_overlays: false   
       - pmm: resolution
@@ -77,6 +92,12 @@ libraries:                       # This is called out once within the config.yml
         template_variables:
           overlay_level: season
       - pmm: ribbon
+    operations:
+      mass_critic_rating_update: imdb
+      mass_audience_rating_update: mdb_tomatoesaudience
+      mass_user_rating_update: tmdb
+      mass_episode_critic_rating_update: imdb
+      mass_episode_audience_rating_update: tmdb
 
          
 settings:
