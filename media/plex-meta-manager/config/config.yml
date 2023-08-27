@@ -86,11 +86,11 @@ libraries:                       # This is called out once within the config.yml
           rating2_image: imdb  
       - pmm: audio_codec
         template_variables:
-          overlay_level: season
+          overlay_level: episode
       - pmm: streaming
       - pmm: video_format
         template_variables:
-          overlay_level: season
+          overlay_level: episode
       - pmm: ribbon
     operations:
       mass_critic_rating_update: imdb
