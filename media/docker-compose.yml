@@ -248,7 +248,7 @@ services:
     environment:
       # - PMM_RADARR_API=${RADARR_API_KEY}
       # - PMM_SONARR_API=${SONARR_API_KEY}
-      - PMM_PLEX_TOKEN=${PMM_PLEX_TOKEN}
+      - PMM_PLEX_API=${PMM_PLEX_API}
       - PMM_TMDB_API=${TMDB_API_KEY}
     volumes:
       - ./plex-meta-manager/config:/config:rw
