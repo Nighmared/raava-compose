@@ -7,34 +7,78 @@ libraries:                       # This is called out once within the config.yml
       - pmm: imdb                # This is a file within PMM's defaults folder
       # see the wiki for how to use local files, folders, URLs, or files from git
     overlay_path:
-      - remove_overlays: false   # Set this to true to remove all overlays
-      - pmm: resolution              # This is a file within PMM's defaults folder
-      # see the wiki for how to use local files, folders, URLs, or files from git
-  Sokka - MCU:                        # These are names of libraries in your Plex
+      - remove_overlays: false   
+      - pmm: resolution
+      - pmm: ratings
+        template_variables:
+          rating1: audience
+          rating1_image: rt_popcorn       
+          rating2: critic
+          rating2_image: imdb      
+      - pmm: audio_codec
+      - pmm: streaming
+      - pmm: video_format
+      - pmm: ribbon
+
+  Sokka - MCU:                        
     metadata_path:
-      - pmm: basic               # This is a file within PMM's defaults folder
-      - pmm: imdb                # This is a file within PMM's defaults folder
-      # see the wiki for how to use local files, folders, URLs, or files from git
+      - pmm: basic               
+      - pmm: imdb                
     overlay_path:
-      - remove_overlays: false   # Set this to true to remove all overlays
+      - remove_overlays: false   
       - pmm: resolution  
-  Sokka - James Bond:                        # These are names of libraries in your Plex
+      - pmm: ratings
+        template_variables:
+          rating1: audience
+          rating1_image: rt_popcorn       
+          rating2: critic
+          rating2_image: imdb  
+      - pmm: audio_codec
+      - pmm: streaming
+      - pmm: video_format
+      - pmm: ribbon
+
+
+  Sokka - James Bond:                      
     metadata_path:
-      - pmm: basic               # This is a file within PMM's defaults folder
-      - pmm: imdb                # This is a file within PMM's defaults folder
-      # see the wiki for how to use local files, folders, URLs, or files from git
+      - pmm: basic               
+      - pmm: imdb              
     overlay_path:
-      - remove_overlays: false   # Set this to true to remove all overlays
-      - pmm: resolution  
+      - remove_overlays: false   
+      - pmm: resolution
+      - pmm: ratings
+        template_variables:
+          rating1: audience
+          rating1_image: rt_popcorn       
+          rating2: critic
+          rating2_image: imdb    
+      - pmm: audio_codec
+      - pmm: streaming
+      - pmm: ribbon
+
   Sokka - Series:
     metadata_path:
-      - pmm: basic               # This is a file within PMM's defaults folder
-      - pmm: imdb                # This is a file within PMM's defaults folder
-      # see the wiki for how to use local files, folders, URLs, or files from git
+      - pmm: basic              
+      - pmm: imdb                
     overlay_path:
-      - remove_overlays: false   # Set this to true to remove all overlays
-      - pmm: resolution              # This is a file within PMM's defaults folder
-      # see the wiki for how to use local files, folders, URLs, or files from git
+      - remove_overlays: false   
+      - pmm: resolution
+      - pmm: ratings
+        template_variables:
+          rating1: audience
+          rating1_image: rt_popcorn       
+          rating2: critic
+          rating2_image: imdb  
+      - pmm: audio_codec
+        template_variables:
+          overlay_level: season
+      - pmm: streaming
+      - pmm: video_format
+        template_variables:
+          overlay_level: season
+      - pmm: ribbon
+
+         
 settings:
   cache: true
   cache_expiration: 60
