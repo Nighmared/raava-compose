@@ -5,7 +5,10 @@ libraries:                       # This is called out once within the config.yml
     metadata_path:
       - pmm: basic               # This is a file within PMM's defaults folder
       - pmm: imdb                # This is a file within PMM's defaults folder
-      - pmm: separator_award
+      - pmm: bafta
+      - pmm: golden
+      - pmm: oscars
+      - pmm: sundance
       # see the wiki for how to use local files, folders, URLs, or files from git
     overlay_path:
       - remove_overlays: false   
