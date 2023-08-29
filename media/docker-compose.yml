@@ -254,6 +254,18 @@ services:
       - ./plex-meta-manager/config:/config:rw
     command: ["python", "./plex-meta-manager.py", "--run"]
 
+  tautulli:
+    image: tautulli/tautulli
+    restart: unless-stopped
+    ports:
+      - 8181:8181
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - tautulli_config:/config
+
 volumes:
   radarr_config:
   sonarr_config:
