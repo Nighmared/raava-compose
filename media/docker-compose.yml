@@ -267,17 +267,18 @@ services:
       - tautulli_config:/config
 
 volumes:
-  radarr_config:
-  sonarr_config:
-  readarr_config:
   bazarr_config:
-  prowlarr_config:
+  deluge_config:
+  kavita_config:
+  nzbget_config:
   ombi_config:
   overseerr_config:
-  deluge_config:
+  prowlarr_config:
+  radarr_config:
+  readarr_config:
+  sonarr_config:
+  tautulli_config:
   transmission_config:
-  nzbget_config:
-  kavita_config:
 
 networks:
   media: null
