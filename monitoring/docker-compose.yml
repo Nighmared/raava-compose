@@ -14,7 +14,3 @@ services:
 
 volumes:
   kuma-config:
-
-networks:
-  media:
-    external: true
