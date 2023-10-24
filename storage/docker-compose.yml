@@ -7,7 +7,7 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - ${SHARE_DIR}/${WHOAMI}/recordings:/recordings
+      - ${SHARE_DIR}/data/${WHOAMI}/recordings:/recordings
       - syncthing_config:/var/syncthing
     ports:
       - 8384:8384
