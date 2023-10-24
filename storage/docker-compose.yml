@@ -1,14 +1,19 @@
 version: "3.3"
 services:
-  # filestash:
-  #   image: machines/filestash
-  #   restart: unless-stopped
-  #   ports:
-  #     - 8334:8334
-  #   environment:
-  #     - APPLICATION_URL=files.raava.nighmared.tech
-  #   volumes:
-  #     - filestash_config:/app/data/state
+  syncthing:
+    image: syncthing/syncthing
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ${SHARE_DIR}/${WHOAMI}/recordings:/recordings
+      - syncthing_config:/var/syncthing
+    ports:
+      - 8384:8384
+      - 22000:22000/tcp #tcp file transfers
+      - 22000:22000/udp #quic file transfers
+      - 21027:21027/udp #receive local discovery broadcasts
   sftpgo:
 #    image: drakkan/sftpgo:v2
     build: .
@@ -30,10 +35,11 @@ services:
       - ${CONFIG_MOUNTPOINT}:/etc/sftpgo
       - ${SHARE_DIR}:/srv/sftpgo
 
-volumes:
-  filestash_config:
-  sftpgo_config:
 
+
+volumes:
+  sftpgo_config:
+  syncthing_config:
 networks:
   keycloak_keycloak:
     external: true
