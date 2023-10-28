@@ -240,11 +240,15 @@ services:
   plex-meta-manager:
     image: meisnate12/plex-meta-manager:latest
     restart: unless-stopped
-
     dns:
       - 192.168.1.11
       - 1.1.1.1
       - 1.0.0.1
+    logging: #because otherwise it just keeps going :ree:
+      driver: "json-file"
+      options:
+        max-file: "3"
+        max-size: "50m"
     environment:
       # - PMM_RADARR_API=${RADARR_API_KEY}
       # - PMM_SONARR_API=${SONARR_API_KEY}
