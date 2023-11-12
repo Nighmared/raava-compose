@@ -99,23 +99,23 @@ services:
     volumes:
       - prowlarr_config:/config
 
-  ombi:
-    image: linuxserver/ombi
-    restart: unless-stopped
-    networks:
-      - media
-    dns:
-      - ${LOCAL_DNS_IP}
-      - 1.1.1.1
-      - 1.0.0.1
-    ports:
-      - 3579:3579
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/Zurich
-    volumes:
-      - ombi_config:/config
+  # ombi:
+  #   image: linuxserver/ombi
+  #   restart: unless-stopped
+  #   networks:
+  #     - media
+  #   dns:
+  #     - ${LOCAL_DNS_IP}
+  #     - 1.1.1.1
+  #     - 1.0.0.1
+  #   ports:
+  #     - 3579:3579
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #     - TZ=Europe/Zurich
+  #   volumes:
+  #     - ombi_config:/config
   overseerr:
     image: sctx/overseerr:latest
     restart: unless-stopped
@@ -275,7 +275,7 @@ volumes:
   deluge_config:
   kavita_config:
   nzbget_config:
-  ombi_config:
+  # ombi_config:
   overseerr_config:
   prowlarr_config:
   radarr_config:
