@@ -83,7 +83,7 @@ services:
       - ${BOND_DIR}:/bond
       - ${MCU_DIR}:/mcu
   prowlarr:
-    image: linuxserver/prowlarr:nightly
+    image: linuxserver/prowlarr:latest
     restart: unless-stopped
     networks:
       - media
