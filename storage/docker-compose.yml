@@ -15,7 +15,7 @@ services:
       - 22000:22000/udp #quic file transfers
       - 21027:21027/udp #receive local discovery broadcasts
   sftpgo:
-#    image: drakkan/sftpgo:v2
+    #    image: drakkan/sftpgo:v2
     build: .
     restart: unless-stopped
     networks:
@@ -34,8 +34,10 @@ services:
       - sftpgo_config:/var/lib/sftpgo
       - ${CONFIG_MOUNTPOINT}:/etc/sftpgo
       - ${SHARE_DIR}:/srv/sftpgo
-
-
+      - ${PLEXCONT_DIR}/Bond:/srv/plex/Bond:ro
+      - ${PLEXCONT_DIR}/MCU:/srv/plex/MCU:ro
+      - ${PLEXCONT_DIR}/Movies:/srv/plex/Movies:ro
+      - ${PLEXCONT_DIR}/Series:/srv/plex/Series:ro
 
 volumes:
   sftpgo_config:
