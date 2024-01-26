@@ -23,6 +23,7 @@ services:
       - KC_DB_URL=${DB_URL}
       - KC_PROXY=edge
       - KC_HOSTNAME_STRICT=false
+      - KC_HEALTH_ENABLED=true
 
     command: ["start"]
 networks:
