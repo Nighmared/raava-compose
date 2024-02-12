@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     volumes:
       - redis_data:/data
+    networks:
+      - paperless
 
   paperless:
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
@@ -15,21 +17,24 @@ services:
       - tika
     ports:
       - "9800:8000"
+    networks:
+      - db_db
+      - paperless
     volumes:
       - ${PAPERLESS_CONSUME_DIR}:/usr/src/paperless/consume
       - ${PAPERLESS_DATA_DIR}:/usr/src/paperless/data
       - ${PAPERLESS_MEDIA_DIR}:/usr/src/paperless/media
       - ${PAPERLESS_EXPORT_DIR}:/usr/src/paperless/export
     environment:
-      - PAPERLESS_REDIS=redis://broker:6379
+      - PAPERLESS_REDIS=redis://paperless-ngx-broker-1:6379
       - PAPERLESS_DBHOST=${DB_HOST}
       - PAPERLESS_DBNAME=paperless
       - PAPERLESS_DBUSER=paperless
       - PAPERLESS_DBPASS=${PAPERLESS_DBPASS}
       #- PAPERLESS_DBENGINE=postgresql # default value is postgres
       - PAPERLESS_TIKA_ENABLED=1
-      - PAPERLESS_TIKA_GOTENBERG_ENDPOINT=htt://gotenberg:3000
-      - PAPERLESS_TIKA_ENDPOINT=http://tika:9998
+      - PAPERLESS_TIKA_GOTENBERG_ENDPOINT=htt://paperless-ngx-gotenberg-1:3000
+      - PAPERLESS_TIKA_ENDPOINT=http://paperless-ngx-tika-1:9998
       - PAPERLESS_SECRET_KEY=${PAPERLESS_SECRET_KEY}
       - PAPERLESS_URL=${PAPERLESS_URL}
       - PAPERLESS_ADMIN_USER=admin
@@ -43,6 +48,8 @@ services:
   gotenberg:
     image: docker.io/gotenberg/gotenberg:7.10
     restart: unless-stopped
+    networks:
+      - paperless
 
     # The gotenberg chromium route is used to convert .eml files. We do not
     # want to allow external content like tracking pixels or even javascript.
@@ -54,6 +61,8 @@ services:
   tika:
     image: ghcr.io/paperless-ngx/tika:latest
     restart: unless-stopped
+    networks:
+      - paperless
 
 volumes:
   redis_data:
@@ -61,3 +70,5 @@ volumes:
 networks:
   db_db:
     external: true
+  paperless:
+    driver: bridge
