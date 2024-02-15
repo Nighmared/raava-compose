@@ -39,12 +39,13 @@ services:
       - PAPERLESS_URL=${PAPERLESS_URL}
       - PAPERLESS_ADMIN_USER=admin
       - PAPERLESS_ADMIN_PASSWORD=${PAPERLESS_ADMIN_PASSWORD}
-      - PAPERLESS_OCR_LANGUAGE=deu
+      - PAPERLESS_OCR_LANGUAGE=deu-eng
       - PAPERLESS_TASK_WORKERS=2
       - PAPERLESS_TIME_ZONE=CET
       - PAPERLESS_CONSUMER_RECURSIVE=true
       - PAPERLESS_CONSUMER_DELETE_DUPLICATES=true
-      # - PAPERLESS_APPS="allauth.socialaccount.providers.openid_connect"
+      - PAPERLESS_APPS="allauth.socialaccount.providers.openid_connect"
+      - 'PAPERLESS_SOCIALACCOUNT_PROVIDERS={"openid_connect": {"APPS": [{"provider_id": "keycloak","name": "Keycloak","client_id": "$KEYCLOAK_CLIENT_ID","secret": "$KEYCLOAK_CLIENT_SECRET","settings": { "server_url": "https://$KEYCLOAK_URL/realms/$KEYCLOAK_REALM/.well-known/openid-configuration"}}]}}'
       - 'PAPERLESS_OCR_USER_ARGS={"invalidate_digital_signatures": true}'
 
   gotenberg:
