@@ -22,6 +22,8 @@ services:
       - ${BOND_DIR}:/bond
       - ${DOWNLOADS_DIR}:/torrents
       - ${DOWNLOADS_DIR_USENET}:/usenet
+      - ${ARR_BACKUP_DIRECTORY}/radarr:/config/Backups
+
   sonarr:
     image: linuxserver/sonarr:3.0.10
     restart: unless-stopped
@@ -42,6 +44,7 @@ services:
       - ${SERIES_DIR}:/tv
       - ${DOWNLOADS_DIR}:/torrents
       - ${DOWNLOADS_DIR_USENET}:/usenet
+      - ${ARR_BACKUP_DIRECTORY}/sonarr:/config/Backups
 
   readarr:
     image: linuxserver/readarr:develop
@@ -62,6 +65,8 @@ services:
       - ${BOOKS_DIR}:/books
       - ${DOWNLOADS_DIR}:/torrents
       - ${DOWNLOADS_DIR_USENET}:/usenet
+      - ${ARR_BACKUP_DIRECTORY}/readarr:/config/Backups
+
   bazarr:
     image: linuxserver/bazarr:1.4.1
     restart: unless-stopped
@@ -82,6 +87,7 @@ services:
       - ${MOVIES_DIR}:/movies
       - ${BOND_DIR}:/bond
       - ${MCU_DIR}:/mcu
+      - ${ARR_BACKUP_DIRECTORY}/bazarr:/config/backup
   prowlarr:
     image: linuxserver/prowlarr:1.13.3
     restart: unless-stopped
@@ -98,6 +104,7 @@ services:
       - TZ=Europe/Berlin
     volumes:
       - prowlarr_config:/config
+      - ${ARR_BACKUP_DIRECTORY}/prowlarr:/config/Backups
   overseerr:
     image: sctx/overseerr:1.33.2
     restart: unless-stopped
