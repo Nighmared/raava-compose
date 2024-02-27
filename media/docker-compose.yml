@@ -122,6 +122,16 @@ services:
       - TZ=Europe/Zurich
     volumes:
       - overseerr_config:/app/config
+  wizarr:
+    image: ghcr.io/wizarrrr/wizarr
+    ports:
+      - 5690:5690
+    volumes:
+      - wizarr_config:/data/database
+    dns:
+      - ${LOCAL_DNS_IP}
+      - 1.1.1.1
+      - 1.0.0.1
 
   deluge:
     image: linuxserver/deluge
@@ -271,6 +281,7 @@ volumes:
   sonarr_config:
   tautulli_config:
   transmission_config:
+  wizarr_config:
 
 networks:
   media: null
