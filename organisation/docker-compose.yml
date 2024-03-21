@@ -9,7 +9,7 @@ services:
 #      - 9090:9090
 
   linkding-oidc:
-    image: nighmared/linkding-oidc
+    image: sissbruecker/linkding
     restart: unless-stopped
     volumes:
       - linkding_data:/etc/linkding/data
