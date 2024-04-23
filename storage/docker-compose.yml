@@ -24,6 +24,11 @@ services:
       - 8090:8090
       - 2022:2022
       - 51414:51414
+    logging:
+      driver: "json-file" # else it fills ups :cri:
+      options:
+        max-file: "3"
+        max-size: "50m"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8090/healthz"]
       interval: 1m30s
