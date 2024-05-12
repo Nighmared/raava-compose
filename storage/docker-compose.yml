@@ -8,6 +8,7 @@ services:
       - PGID=1000
     volumes:
       - ${SHARE_DIR}/data/${WHOAMI}/Lecture_Files:/Lecture_Files
+      - ${SYNCED_DIRS_PATH}:/synced_dirs
       - syncthing_config:/var/syncthing
     ports:
       - 8384:8384
