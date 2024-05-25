@@ -208,7 +208,7 @@ services:
       - ${MOVIES_DIR}:/movies
 
   kavita:
-    image: kizaing/kavita:latest
+    image: jvmilazz0/kavita:latest
     networks:
       - media
       - kavita
