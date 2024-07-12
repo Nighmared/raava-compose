@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   radarr:
-    image: linuxserver/radarr:5.2.6
+    image: linuxserver/radarr:5.7.0
     restart: unless-stopped
     networks:
       - media
@@ -25,7 +25,7 @@ services:
       - ${ARR_BACKUP_DIRECTORY}/radarr:/config/Backups
 
   sonarr:
-    image: linuxserver/sonarr:3.0.10
+    image: linuxserver/sonarr:4.0.6
     restart: unless-stopped
     networks:
       - media
@@ -106,7 +106,7 @@ services:
       - prowlarr_config:/config
       - ${ARR_BACKUP_DIRECTORY}/prowlarr:/config/Backups
   overseerr:
-    image: sctx/overseerr:1.33.2
+    image: sctx/overseerr:latest
     restart: unless-stopped
     networks:
       - media
