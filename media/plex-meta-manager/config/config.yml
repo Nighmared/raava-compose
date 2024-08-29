@@ -1,100 +1,98 @@
 ## This file is a template remove the .template to use the file
 
-libraries:                       # This is called out once within the config.yml file
-  Sokka - Movies:                        # These are names of libraries in your Plex
-    metadata_path:
-      - pmm: basic               # This is a file within PMM's defaults folder
-      - pmm: imdb                # This is a file within PMM's defaults folder
-      - pmm: bafta
-      - pmm: golden
-      - pmm: oscars
-      - pmm: sundance
+libraries: # This is called out once within the config.yml file
+  Sokka - Movies: # These are names of libraries in your Plex
+    collection_files:
+      - default: basic # This is a file within PMM's defaults folder
+      - default: imdb # This is a file within PMM's defaults folder
+      - default: bafta
+      - default: golden
+      - default: oscars
+      - default: sundance
       # see the wiki for how to use local files, folders, URLs, or files from git
-    overlay_path:
-      - remove_overlays: false   
-      - pmm: resolution
-      - pmm: ratings
+    overlay_files:
+      - remove_overlays: false
+      - default: resolution
+      - default: ratings
         template_variables:
           rating1: audience
-          rating1_image: rt_popcorn       
+          rating1_image: rt_popcorn
           rating2: critic
-          rating2_image: imdb      
-      - pmm: audio_codec
-      - pmm: streaming
-      - pmm: video_format
-      - pmm: ribbon
+          rating2_image: imdb
+      - default: audio_codec
+      - default: streaming
+      - default: video_format
+      - default: ribbon
     operations:
       mass_critic_rating_update: imdb
       mass_audience_rating_update: mdb_tomatoesaudience
       mass_user_rating_update: tmdb
 
-
-  Sokka - MCU:                        
-    metadata_path:
-      - pmm: basic               
-      - pmm: imdb                
-    overlay_path:
-      - remove_overlays: false   
-      - pmm: resolution  
-      - pmm: ratings
+  Sokka - MCU:
+    metadata_files:
+      - default: basic
+      - default: imdb
+    overlay_files:
+      - remove_overlays: false
+      - default: resolution
+      - default: ratings
         template_variables:
           rating1: audience
-          rating1_image: rt_popcorn       
+          rating1_image: rt_popcorn
           rating2: critic
-          rating2_image: imdb  
-      - pmm: audio_codec
-      - pmm: streaming
-      - pmm: video_format
-      - pmm: ribbon
+          rating2_image: imdb
+      - default: audio_codec
+      - default: streaming
+      - default: video_format
+      - default: ribbon
     operations:
       mass_critic_rating_update: imdb
       mass_audience_rating_update: mdb_tomatoesaudience
       mass_user_rating_update: tmdb
 
-
-  Sokka - James Bond:                      
-    metadata_path:
-      - pmm: basic               
-      - pmm: imdb              
-    overlay_path:
-      - remove_overlays: false   
-      - pmm: resolution
-      - pmm: ratings
+  Sokka - James Bond:
+    metadata_files:
+      - default: basic
+      - default: imdb
+    overlay_files:
+      - remove_overlays: false
+      - default: resolution
+      - default: ratings
         template_variables:
           rating1: audience
-          rating1_image: rt_popcorn       
+          rating1_image: rt_popcorn
           rating2: critic
-          rating2_image: imdb    
-      - pmm: audio_codec
-      - pmm: streaming
-      - pmm: ribbon
+          rating2_image: imdb
+      - default: audio_codec
+      - default: streaming
+      - default: ribbon
     operations:
       mass_critic_rating_update: imdb
       mass_audience_rating_update: mdb_tomatoesaudience
       mass_user_rating_update: tmdb
 
   Sokka - Series:
-    metadata_path:
-      - pmm: basic              
-      - pmm: imdb   
-      - pmm: separator_award             
-    overlay_path:
-      - remove_overlays: false   
-      - pmm: resolution
-      - pmm: ratings
+    metadata_files:
+      - default: basic
+      - default: imdb
+      - default: separator_award
+    overlay_files:
+      - remove_overlays: false
+      - default: resolution
+      - default: ratings
         template_variables:
           rating1: audience
-          rating1_image: rt_popcorn       
+          rating1_image: rt_popcorn
           rating2: critic
-          rating2_image: imdb  
-      - pmm: audio_codec
+          rating2_image: imdb
+      - default: audio_codec
         template_variables:
           overlay_level: episode
-      - pmm: streaming
-      - pmm: video_format
+      - default: streaming
+      - default: video_format
         template_variables:
           overlay_level: episode
-      - pmm: ribbon
+      - default: ribbon
     operations:
       mass_critic_rating_update: imdb
       mass_audience_rating_update: mdb_tomatoesaudience
@@ -102,7 +100,6 @@ libraries:                       # This is called out once within the config.yml
       mass_episode_critic_rating_update: imdb
       mass_episode_audience_rating_update: tmdb
 
-         
 settings:
   cache: true
   cache_expiration: 60
@@ -141,20 +138,20 @@ settings:
   verify_ssl: true
   custom_repo:
   check_nightly: false
-webhooks:                        # Can be individually specified per library as well
+webhooks: # Can be individually specified per library as well
   error:
   version:
   run_start:
   run_end:
   changes:
-plex:                            # Can be individually specified per library as well; REQUIRED for the script to run
+plex: # Can be individually specified per library as well; REQUIRED for the script to run
   url: http://192.168.1.25:32400
   token: <<PLEX_API>>
   timeout: 60
   clean_bundles: false
   empty_trash: false
   optimize: false
-tmdb:                            # REQUIRED for the script to run
+tmdb: # REQUIRED for the script to run
   apikey: <<TMDB_API>>
   language: en
 # tautulli:                        # Can be individually specified per library as well
@@ -204,8 +201,6 @@ tmdb:                            # REQUIRED for the script to run
 #   plex_path:
 
 ####################################333
-
-
 
 # trakt:
 #   client_id: ####################
