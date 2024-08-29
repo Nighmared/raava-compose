@@ -236,8 +236,8 @@ services:
   #     - SEND_ADDR=${KAVITA_EMAIL_SEND_ADDR}
   #     - DISP_NAME=${KAVITA_EMAIL_DISP_NAME}
   #     - ALLOW_SENDTO=true
-  plex-meta-manager:
-    image: meisnate12/plex-meta-manager:latest
+  kometa:
+    image: kometateam/kometa:latest
     restart: unless-stopped
     dns:
       - 192.168.1.11
@@ -251,11 +251,11 @@ services:
     environment:
       # - PMM_RADARR_API=${RADARR_API_KEY}
       # - PMM_SONARR_API=${SONARR_API_KEY}
-      - PMM_PLEX_API=${PMM_PLEX_API}
-      - PMM_TMDB_API=${TMDB_API_KEY}
+      - KOMETA_PLEX_API=${PMM_PLEX_API}
+      - KOMETA_TMDB_API=${TMDB_API_KEY}
     volumes:
-      - ./plex-meta-manager/config:/config:rw
-    command: ["python", "./plex-meta-manager.py", "--run"]
+      - ./kometa/config:/config:rw
+    command: ["python", "./kometa.py", "--run"]
 
   tautulli:
     image: tautulli/tautulli
