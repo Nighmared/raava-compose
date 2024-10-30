@@ -52,8 +52,14 @@ services:
     networks:
       - media
     dns:
+      - 192.168.1.11
       - 1.1.1.1
       - 1.0.0.1
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "3"
+        max-size: "50m"
     ports:
       - 8787:8787
     environment:
