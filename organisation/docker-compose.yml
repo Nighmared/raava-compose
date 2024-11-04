@@ -39,6 +39,7 @@ services:
       - DB_USER=${SH_DB_USER}
       - DB_PASSWORD=${SH_DB_PASS}
       - DB_HOST=${SH_DB_HOST}
+      - SHELL_VERBOSITY=3
   shlink-web:
     image: shlinkio/shlink-web-client
     ports:
