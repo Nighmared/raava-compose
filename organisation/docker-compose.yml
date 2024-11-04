@@ -34,14 +34,13 @@ services:
       - db_db
 
     environment:
-      - DEFAULT_DOMAIN=raava.nighmared.ch
+      - DEFAULT_DOMAIN=sh.raava.nighmared.ch
       - IS_HTTPS_ENABLED=false
       - GEOLITE_LICENSE_KEY=${GEOLITE_LICENSE_KEY}
       - DB_DRIVER=postgres
       - DB_USER=${SH_DB_USER}
       - DB_PASSWORD=${SH_DB_PASS}
       - DB_HOST=${SH_DB_HOST}
-      - SHELL_VERBOSITY=3
   shlink-web:
     image: shlinkio/shlink-web-client
     ports:
