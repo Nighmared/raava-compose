@@ -49,5 +49,7 @@ volumes:
   linkding_data:
 
 networks:
+  organisation:
+    driver: bridge
   db_db:
     external: true
