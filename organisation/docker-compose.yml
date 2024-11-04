@@ -30,6 +30,8 @@ services:
     restart: unless-stopped
     ports:
       - 9902:8080
+    networks:
+      - db_db
 
     environment:
       - DEFAULT_DOMAIN=raava.nighmared.ch
@@ -49,7 +51,5 @@ volumes:
   linkding_data:
 
 networks:
-  organisation:
-    driver: bridge
   db_db:
     external: true
