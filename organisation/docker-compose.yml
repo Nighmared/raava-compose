@@ -34,7 +34,7 @@ services:
       - db_db
 
     environment:
-      - DEFAULT_DOMAIN=sh.raava.nighmared.ch
+      - DEFAULT_DOMAIN=link.nighmared.ch
       - IS_HTTPS_ENABLED=false
       - GEOLITE_LICENSE_KEY=${GEOLITE_LICENSE_KEY}
       - DB_DRIVER=postgres
