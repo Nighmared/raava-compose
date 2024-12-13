@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   radarr:
-    image: linuxserver/radarr:5.7.0
+    image: linuxserver/radarr:5.15.1
     restart: unless-stopped
     networks:
       - media
@@ -25,7 +25,7 @@ services:
       - ${ARR_BACKUP_DIRECTORY}/radarr:/config/Backups
 
   sonarr:
-    image: linuxserver/sonarr:4.0.6
+    image: linuxserver/sonarr:4.0.11
     restart: unless-stopped
     networks:
       - media
@@ -74,7 +74,7 @@ services:
       - ${ARR_BACKUP_DIRECTORY}/readarr:/config/Backups
 
   bazarr:
-    image: linuxserver/bazarr:1.4.1
+    image: linuxserver/bazarr:1.4.5
     restart: unless-stopped
     networks:
       - media
@@ -95,7 +95,7 @@ services:
       - ${MCU_DIR}:/mcu
       - ${ARR_BACKUP_DIRECTORY}/bazarr:/config/backup
   prowlarr:
-    image: linuxserver/prowlarr:1.13.3
+    image: linuxserver/prowlarr:1.27.0
     restart: unless-stopped
     networks:
       - media
