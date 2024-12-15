@@ -3,12 +3,12 @@
 libraries: # This is called out once within the config.yml file
   Sokka - Movies: # These are names of libraries in your Plex
     collection_files:
-      - default: basic # This is a file within PMM's defaults folder
-      - default: imdb # This is a file within PMM's defaults folder
-      - default: bafta
-      - default: golden
       - default: oscars
+      - default: golden
       - default: sundance
+      - default: bafta
+      - default: imdb
+      - default: basic
       # see the wiki for how to use local files, folders, URLs, or files from git
     overlay_files:
       - remove_overlays: false
@@ -19,6 +19,8 @@ libraries: # This is called out once within the config.yml file
           rating1_image: rt_popcorn
           rating2: critic
           rating2_image: imdb
+          rating3: user
+          rating3_image: imdb
       - default: audio_codec
       - default: streaming
       - default: video_format
@@ -26,7 +28,6 @@ libraries: # This is called out once within the config.yml file
     operations:
       mass_critic_rating_update: imdb
       mass_audience_rating_update: mdb_tomatoesaudience
-      mass_user_rating_update: tmdb
 
   Sokka - MCU:
     metadata_files:
@@ -48,7 +49,6 @@ libraries: # This is called out once within the config.yml file
     operations:
       mass_critic_rating_update: imdb
       mass_audience_rating_update: mdb_tomatoesaudience
-      mass_user_rating_update: tmdb
 
   Sokka - James Bond:
     metadata_files:
@@ -69,7 +69,6 @@ libraries: # This is called out once within the config.yml file
     operations:
       mass_critic_rating_update: imdb
       mass_audience_rating_update: mdb_tomatoesaudience
-      mass_user_rating_update: tmdb
 
   Sokka - Series:
     metadata_files:
@@ -96,7 +95,6 @@ libraries: # This is called out once within the config.yml file
     operations:
       mass_critic_rating_update: imdb
       mass_audience_rating_update: mdb_tomatoesaudience
-      mass_user_rating_update: tmdb
       mass_episode_critic_rating_update: imdb
       mass_episode_audience_rating_update: tmdb
 
