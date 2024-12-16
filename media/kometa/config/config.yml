@@ -47,7 +47,7 @@ libraries: # This is called out once within the config.yml file
     operations:
       mass_critic_rating_update: imdb
       mass_audience_rating_update: mdb_tomatoesaudience
-
+      mass_user_rating_update: reset
   Sokka - James Bond:
     metadata_files:
       - default: basic
@@ -67,6 +67,7 @@ libraries: # This is called out once within the config.yml file
     operations:
       mass_critic_rating_update: imdb
       mass_audience_rating_update: mdb_tomatoesaudience
+      mass_user_rating_update: reset
 
   Sokka - Series:
     metadata_files:
