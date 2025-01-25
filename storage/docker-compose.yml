@@ -17,8 +17,7 @@ services:
       - 22000:22000/udp #quic file transfers
       - 21027:21027/udp #receive local discovery broadcasts
   sftpgo:
-    #    image: drakkan/sftpgo:v2
-    build: .
+    image: ghcr.io/nighmared/raava-compose-sftpgo:main
     restart: unless-stopped
     networks:
       - keycloak_keycloak
