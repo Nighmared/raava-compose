@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   radarr:
-    image: linuxserver/radarr:5.15.1
+    image: linuxserver/radarr:latest
     restart: unless-stopped
     networks:
       - media
@@ -25,7 +25,7 @@ services:
       - ${ARR_BACKUP_DIRECTORY}/radarr:/config/Backups
 
   sonarr:
-    image: linuxserver/sonarr:4.0.11
+    image: linuxserver/sonarr:latest
     restart: unless-stopped
     networks:
       - media
