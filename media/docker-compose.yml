@@ -41,6 +41,7 @@ services:
       - TZ=Europe/Berlin
     volumes:
       - sonarr_config:/config
+      - ${MEDIA_ROOT}/Series:/cont/Series
       - ${SERIES_DIR}:/tv
       - ${DOWNLOADS_DIR}:/torrents
       - ${DOWNLOADS_DIR_USENET}:/usenet
@@ -185,6 +186,7 @@ services:
     volumes:
       - transmission_config:/config
       - ${DOWNLOADS_DIR}:/torrents
+      - ${MEDIA_ROOT}/torrents:/cont/torrents
       - ${MCU_DIR}:/mcu
       - ${SERIES_DIR}:/tv
       - ${BOND_DIR}:/bond
