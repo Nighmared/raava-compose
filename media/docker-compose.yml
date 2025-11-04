@@ -19,6 +19,8 @@ services:
       - radarr_config:/config
       - ${MOVIES_DIR}:/movies
       - ${MCU_DIR}:/mcu
+      - ${MEDIA_ROOT}/Movies:/cont/Movies
+      - ${MEDIA_ROOT}/torrents:/cont/torrents
       - ${BOND_DIR}:/bond
       - ${DOWNLOADS_DIR}:/torrents
       - ${DOWNLOADS_DIR_USENET}:/usenet
@@ -43,7 +45,6 @@ services:
       - sonarr_config:/config
       - ${MEDIA_ROOT}/Series:/cont/Series
       - ${MEDIA_ROOT}/torrents:/cont/torrents
-      - ${SERIES_DIR}:/tv
       - ${DOWNLOADS_DIR}:/torrents
       - ${DOWNLOADS_DIR_USENET}:/usenet
       - ${ARR_BACKUP_DIRECTORY}/sonarr:/config/Backups
