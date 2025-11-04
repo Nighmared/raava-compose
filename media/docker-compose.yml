@@ -42,6 +42,7 @@ services:
     volumes:
       - sonarr_config:/config
       - ${MEDIA_ROOT}/Series:/cont/Series
+      - ${MEDIA_ROOT}/torrents:/cont/torrents
       - ${SERIES_DIR}:/tv
       - ${DOWNLOADS_DIR}:/torrents
       - ${DOWNLOADS_DIR_USENET}:/usenet
