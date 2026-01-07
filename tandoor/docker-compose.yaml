@@ -1,6 +1,6 @@
 services:
   tandoor:
-    image: vabene1111/recipces
+    image: vabene1111/recipes
     restart: unless-stopped
     ports:
       - "9801:80"
