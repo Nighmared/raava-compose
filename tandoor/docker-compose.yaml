@@ -4,6 +4,9 @@ services:
     restart: unless-stopped
     ports:
       - "9801:80"
+    networks:
+      - db_db
+      - tandoor
     environment:
       - SECRET_KEY=${SECRET_KEY}
       - DB_ENGINE=django.db.backends.postgresql
@@ -19,7 +22,7 @@ services:
 networks:
   db_db:
     external: true
-  paperless:
+  tandoor:
     driver: bridge
 
 volumes:
