@@ -1,0 +1,27 @@
+services:
+  tandoor:
+    image: vabene1111/recipces
+    restart: unless-stopped
+    ports:
+      - "9801:80"
+    environment:
+      - SECRET_KEY=${SECRET_KEY}
+      - DB_ENGINE=django.db.backends.postgresql
+      - POSTGRES_HOST=${DB_HOST}
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=tandoor
+      - POSTGRES_DB=tandoor
+      - POSTGRES_PASSWORD=${POSTGRES_PASS}
+    volumes:
+      - staticfiles:/opt/recipes/staticfiles
+      - mediafiles:/opt/recipes/mediafiles
+
+networks:
+  db_db:
+    external: true
+  paperless:
+    driver: bridge
+
+volumes:
+  staticfiles:
+  mediafiles:
