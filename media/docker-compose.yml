@@ -115,8 +115,9 @@ services:
       - prowlarr_config:/config
       - ${ARR_BACKUP_DIRECTORY}/prowlarr:/config/Backups
   overseerr:
-    image: sctx/overseerr:latest
+    image: ghcr.io/seerr-team/seerr:latest
     restart: unless-stopped
+    init: true
     networks:
       - media
     dns:
