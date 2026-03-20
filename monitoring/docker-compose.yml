@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   uptime-kuma:
-    image: louislam/uptime-kuma
+    image: louislam/uptime-kuma:2
     restart: unless-stopped
     dns:
       - 192.168.1.11
