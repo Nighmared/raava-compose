@@ -11,6 +11,8 @@ services:
   paperless:
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
     restart: unless-stopped
+    logging:
+      driver: "local"
     depends_on:
       - broker
       - gotenberg
@@ -51,6 +53,10 @@ services:
   gotenberg:
     image: docker.io/gotenberg/gotenberg:7.10
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     networks:
       - paperless
 
@@ -64,6 +70,10 @@ services:
   tika:
     image: ghcr.io/paperless-ngx/tika:latest
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     networks:
       - paperless
 

@@ -3,13 +3,17 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:20.0.2
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "100m"
     networks:
       - keycloak
       - db_db
     ports:
       - 8081:8080
     healthcheck:
-      test: ["CMD","curl","-fsS","http://localhost:8080"]
+      test: ["CMD", "curl", "-fsS", "http://localhost:8080"]
       interval: 1m
       timeout: 10s
       retries: 3

@@ -11,6 +11,10 @@ services:
   linkding-oidc:
     image: sissbruecker/linkding
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     volumes:
       - linkding_data:/etc/linkding/data
     ports:
@@ -28,6 +32,10 @@ services:
   shlink:
     image: shlinkio/shlink:stable
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     ports:
       - 9902:8080
     networks:
@@ -43,6 +51,10 @@ services:
       - DB_HOST=${SH_DB_HOST}
   shlink-web:
     image: shlinkio/shlink-web-client
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     ports:
       - 9903:8080
 
@@ -53,6 +65,10 @@ services:
       interval: 1m30s
       timeout: 10s
       retries: 3
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     ports:
       - "8803:8080"
     volumes:

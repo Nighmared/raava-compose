@@ -3,6 +3,10 @@ services:
   radarr:
     image: linuxserver/radarr:5.26.2
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     networks:
       - media
     dns:
@@ -29,6 +33,10 @@ services:
   sonarr:
     image: linuxserver/sonarr:4.0.15
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     networks:
       - media
     dns:
@@ -52,17 +60,16 @@ services:
   readarr:
     image: linuxserver/readarr:develop
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     networks:
       - media
     dns:
       - 192.168.1.11
       - 1.1.1.1
       - 1.0.0.1
-    logging:
-      driver: "json-file"
-      options:
-        max-file: "3"
-        max-size: "50m"
     ports:
       - 8787:8787
     environment:
@@ -79,6 +86,10 @@ services:
   bazarr:
     image: linuxserver/bazarr:latest
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     networks:
       - media
     dns:
@@ -100,6 +111,10 @@ services:
   prowlarr:
     image: linuxserver/prowlarr:latest
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     networks:
       - media
     dns:
@@ -117,6 +132,10 @@ services:
   overseerr:
     image: ghcr.io/seerr-team/seerr:latest
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     init: true
     networks:
       - media
@@ -146,6 +165,10 @@ services:
   deluge:
     image: linuxserver/deluge
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     networks:
       - media
     dns:
@@ -171,6 +194,10 @@ services:
   transmission:
     image: linuxserver/transmission
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     networks:
       - media
     dns:
@@ -197,6 +224,10 @@ services:
   nzbget:
     image: linuxserver/nzbget:latest
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     networks:
       - media
     dns:
@@ -231,6 +262,10 @@ services:
     ports:
       - 5000:5000
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
   # kavita-email:
   #   image: kizaing/kavitaemail:latest
   #   restart: unless-stopped
@@ -250,15 +285,14 @@ services:
   kometa:
     image: kometateam/kometa:latest
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     dns:
       - 192.168.1.11
       - 1.1.1.1
       - 1.0.0.1
-    logging: #because otherwise it just keeps going :ree:
-      driver: "json-file"
-      options:
-        max-file: "3"
-        max-size: "50m"
     environment:
       # - PMM_RADARR_API=${RADARR_API_KEY}
       # - PMM_SONARR_API=${SONARR_API_KEY}
@@ -271,6 +305,10 @@ services:
   tautulli:
     image: tautulli/tautulli
     restart: unless-stopped
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     ports:
       - 8181:8181
     environment:

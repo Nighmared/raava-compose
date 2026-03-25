@@ -3,6 +3,8 @@ services:
   syncthing:
     image: syncthing/syncthing
     restart: unless-stopped
+    logging:
+      driver: "local"
     environment:
       - PUID=1000
       - PGID=1000

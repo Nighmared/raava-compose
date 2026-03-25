@@ -1,6 +1,10 @@
 services:
   cloudflared:
     image: cloudflare/cloudflared:latest
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
     command:
       ["tunnel", "--no-autoupdate", "run", "--token", "${CLOUDFLARED_TOKEN}"]
     restart: always
