@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     logging:
       driver: "local"
+      options:
+        max-size: "30m"
     environment:
       - PUID=1000
       - PGID=1000
