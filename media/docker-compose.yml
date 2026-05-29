@@ -200,7 +200,6 @@ services:
         max-size: "10m"
     networks:
       - media
-      - transmissionipv6
     dns:
       - 1.1.1.1
       - 1.0.0.1
@@ -334,10 +333,6 @@ volumes:
   wizarr_config:
 
 networks:
-  media: null
-  kavita: null
-  transmissionipv6:
+  media:
     enable_ipv6: true
-    ipam:
-      config:
-        - subnet: ${TRANSMISSION_SUBNET}
+  kavita: null
