@@ -21,12 +21,13 @@ services:
       - TZ=Europe/Berlin
     volumes:
       - radarr_config:/config
-      - ${MOVIES_DIR}:/movies
-      - ${MCU_DIR}:/mcu
-      - ${MEDIA_ROOT}/Movies:/cont/Movies
-      - ${MEDIA_ROOT}/torrents:/cont/torrents
-      - ${BOND_DIR}:/bond
-      - ${DOWNLOADS_DIR}:/torrents
+      # - ${MOVIES_DIR}:/movies
+      # - ${MCU_DIR}:/mcu
+      # - ${MEDIA_ROOT}/Movies:/cont/Movies
+      # - ${MEDIA_ROOT}/torrents:/cont/torrents
+      # - ${BOND_DIR}:/bond
+      # - ${DOWNLOADS_DIR}:/torrents
+      - ${MEDIA_ROOT}:/cont/
       - ${DOWNLOADS_DIR_USENET}:/usenet
       - ${ARR_BACKUP_DIRECTORY}/radarr:/config/Backups
 
@@ -51,10 +52,10 @@ services:
       - TZ=Europe/Berlin
     volumes:
       - sonarr_config:/config
-      - ${MEDIA_ROOT}/Series:/cont/Series
-      - ${MEDIA_ROOT}/torrents:/cont/torrents
-      - ${DOWNLOADS_DIR}:/torrents
-      - ${DOWNLOADS_DIR_USENET}:/usenet
+      - ${MEDIA_ROOT}:/cont/
+      # - ${MEDIA_ROOT}/torrents:/cont/torrents
+      # - ${DOWNLOADS_DIR}:/torrents
+      # - ${DOWNLOADS_DIR_USENET}:/usenet
       - ${ARR_BACKUP_DIRECTORY}/sonarr:/config/Backups
 
   readarr:
@@ -215,7 +216,7 @@ services:
       - PASS=${TRANSMISSION_PASS}
     volumes:
       - transmission_config:/config
-      - ${DOWNLOADS_DIR}:/torrents
+      # - ${DOWNLOADS_DIR}:/torrents
       - ${MEDIA_ROOT}/torrents:/cont/torrents
       - ${MCU_DIR}:/mcu
       - ${SERIES_DIR}:/tv
@@ -243,11 +244,12 @@ services:
       - NZBGET_PASS=${NZBGET_PASS}
     volumes:
       - nzbget_config:/config
-      - ${DOWNLOADS_DIR_USENET}:/usenet
-      - ${MCU_DIR}:/mcu
-      - ${SERIES_DIR}:/tv
-      - ${BOND_DIR}:/bond
-      - ${MOVIES_DIR}:/movies
+      # - ${DOWNLOADS_DIR_USENET}:/usenet
+      - ${MEDIA_ROOT}/usenet:/cont/usenet
+      # - ${MCU_DIR}:/mcu
+      # - ${SERIES_DIR}:/tv
+      # - ${BOND_DIR}:/bond
+      # - ${MOVIES_DIR}:/movies
 
   kavita:
     image: jvmilazz0/kavita:latest
