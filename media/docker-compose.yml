@@ -104,10 +104,7 @@ services:
       - TZ=Europe/Zurich
     volumes:
       - bazarr_config:/config
-      - ${SERIES_DIR}:/tv
-      - ${MOVIES_DIR}:/movies
-      - ${BOND_DIR}:/bond
-      - ${MCU_DIR}:/mcu
+      - ${MEDIA_ROOT}:/cont
       - ${ARR_BACKUP_DIRECTORY}/bazarr:/config/backup
   prowlarr:
     image: linuxserver/prowlarr:latest
