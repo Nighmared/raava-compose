@@ -28,6 +28,7 @@ services:
       - KC_HOSTNAME_STRICT=false
       - KC_HEALTH_ENABLED=true
       - KC_HTTP_ENABLED=true
+      - KC_PROXY_HEADERS=xforwarded
 
     command: ["start"]
 networks:
