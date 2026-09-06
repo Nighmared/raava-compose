@@ -25,9 +25,9 @@ services:
       - KC_DB_PASSWORD=${DB_PASSWORD}
       - KC_DB_USERNAME=${DB_USERNAME}
       - KC_DB_URL=${DB_URL}
-      - KC_PROXY=edge
       - KC_HOSTNAME_STRICT=false
       - KC_HEALTH_ENABLED=true
+      - KC_HTTP_ENABLED=true
 
     command: ["start"]
 networks:
