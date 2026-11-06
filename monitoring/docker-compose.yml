@@ -17,5 +17,33 @@ services:
       - kuma-config:/app/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
+  alloy:
+    image: dhi.io/alloy:1
+    group_add:
+      - 997
+    ports:
+      - "12347:12347"
+      - "12348:12348"
+      - "6832:6832"
+      - "55679:55679"
+      - "4317:4317"
+      - "4318:4318"
+    volumes:
+      - ./alloy:/etc/alloy
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - alloy-data:/var/lib/alloy/data
+    command:
+      [
+        "run",
+        "--server.http.listen-addr=0.0.0.0:12347",
+        "--storage.path=/var/lib/alloy/data",
+        "/etc/alloy/config.alloy",
+      ]
+    environment:
+      - GRAFANA_LOKI_USERNAME=${GRAFANA_LOKI_USERNAME}
+      - GRAFANA_PROM_USERNAME=${GRAFANA_PROM_USERNAME}
+      - GRAFANA_CLOUD_API_KEY=${GRAFANA_CLOUD_API_KEY}
+
 volumes:
   kuma-config:
+  alloy-data:

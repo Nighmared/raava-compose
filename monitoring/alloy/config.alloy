@@ -1,0 +1,60 @@
+prometheus.exporter.cadvisor "sokka" {
+  docker_only = true
+}
+
+discovery.relabel "sokka" {
+    targets = prometheus.exporter.cadvisor.sokka.targets
+
+    rule {
+        target_label = "job"
+        replacement  = "integrations/docker"
+    }
+
+    rule {
+        target_label = "instance"
+        replacement  = constants.hostname
+    }
+}
+
+prometheus.scrape "scraper" {
+  targets    = discovery.relabel.sokka.output
+  forward_to = [ prometheus.remote_write.grafana.receiver ]
+
+  scrape_interval = "10s"
+}
+
+prometheus.scrape "docker" {
+    targets = discovery.docker.containers.targets
+    forward_to = [prometheus.remote_write.grafana.receiver]
+}
+
+discovery.docker "containers" {
+    host ="unix:///var/run/docker.sock"
+}
+
+loki.source.docker "sokka" {
+    host = "unix:///var/run/docker.sock"
+    targets = discovery.docker.containers.targets
+    labels = {"app"="docker"}
+    forward_to = [loki.write.grafana.receiver]
+}
+
+loki.write "grafana" {
+    endpoint{
+        url = "https://logs-prod-012.grafana.net/loki/api/v1/push"
+        basic_auth {
+            username = sys.env("GRAFANA_LOKI_USERNAME")
+            password = sys.env("GRAFANA_CLOUD_API_KEY")
+        }
+    }
+}
+
+prometheus.remote_write "grafana" {
+    endpoint {
+        url ="https://prometheus-prod-24-prod-eu-west-2.grafana.net/api/prom/push"
+        basic_auth{
+            username = sys.env("GRAFANA_PROM_USERNAME")
+            password = sys.env("GRAFANA_CLOUD_API_KEY")
+        }
+    }
+}
