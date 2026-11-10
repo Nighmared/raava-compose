@@ -12,27 +12,27 @@ discovery.relabel "sokka" {
 
     rule {
         target_label = "instance"
-        replacement  = constants.hostname
-    }
-
-    rule {
-        target_label = "container"
-        source_labels = ["__meta_docker_container_name"]
-        regex = "/(.*)"
+        replacement  = "sokka"
     }
 }
 
 prometheus.scrape "scraper" {
-  targets    = discovery.relabel.sokka.output
-  forward_to = [ prometheus.remote_write.grafana.receiver ]
-
-  scrape_interval = "10s"
+    targets         = discovery.relabel.sokka.output
+    scrape_interval = "10s"
+    forward_to      = [prometheus.relabel.sokka.receiver]
 }
 
-prometheus.scrape "docker" {
-    targets = discovery.docker.containers.targets
+prometheus.relabel "sokka" {
     forward_to = [prometheus.remote_write.grafana.receiver]
+
+    rule {
+        source_labels = ["name"]
+        regex         = "(.+)"
+        target_label  = "container"
+        replacement   = "$1"
+    }
 }
+
 
 discovery.docker "containers" {
     host ="unix:///var/run/docker.sock"
