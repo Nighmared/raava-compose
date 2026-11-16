@@ -1,10 +1,6 @@
 services:
   cloudflared:
     image: cloudflare/cloudflared:latest
-    deploy:
-      mode: replicated
-      endpoint_mode: vip
-      replicas: 2
     logging:
       driver: "local"
       options:
